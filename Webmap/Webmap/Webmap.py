@@ -23,6 +23,7 @@ fg = folium.FeatureGroup(name="My Map")
 for lt, ln, el in zip(lat, lon, elev):
     fg.add_child(folium.CircleMarker(location=[lt,ln], popup=str(el)+ " m", radius=12, fill_color=color_producer(el), fill=True, fill_opacity=0.7, color='grey'))
 
+fg.add_child(folium.GeoJson(data=(open('world.json', 'r', encoding='utf-8-sig').read())))
 map.add_child(fg)
 
 map.save("Map1.html")
